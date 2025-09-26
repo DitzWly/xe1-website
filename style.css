@@ -12,14 +12,21 @@ nav { display:flex; justify-content:space-between; align-items:center; }
 
 /* HERO */
 .hero {
-  background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
-  background-size:400% 400%;
+  background: 
+    linear-gradient(120deg, rgba(15,32,39,0.8), rgba(32,58,67,0.8), rgba(44,83,100,0.8)),
+    url("hero-image.jpg") center/cover no-repeat;
+  background-size: cover;
+  background-blend-mode: overlay;
   animation: gradientShift 15s ease infinite;
-  color:white;
-  text-align:center;
-  padding:140px 20px;
-  min-height:100vh;
-  display:flex; justify-content:center; align-items:center; flex-direction:column;
+  color: white;
+  text-align: center;
+  padding: 140px 20px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
 }
 @keyframes gradientShift {
   0% {background-position:0% 50%;}
@@ -102,4 +109,5 @@ footer {
 .thumb-strip { display:flex; justify-content:center; gap:8px; margin-top:20px; max-width:90%; overflow-x:auto; padding:10px; }
 .thumb-strip img { width:70px; height:50px; object-fit:cover; border-radius:6px; opacity:0.6; cursor:pointer; transition:0.3s; }
 .thumb-strip img:hover, .thumb-strip img.active { opacity:1; transform:scale(1.1); box-shadow:0 0 10px rgba(255,65,108,0.8); }
+
 
