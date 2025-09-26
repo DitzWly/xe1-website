@@ -1,4 +1,4 @@
-// === NAVBAR SCROLL EFFECT ===
+// NAVBAR SCROLL
 window.addEventListener("scroll", () => {
   const header = document.querySelector("header");
   if (window.scrollY > 50) {
@@ -10,102 +10,104 @@ window.addEventListener("scroll", () => {
   }
 });
 
-// === HERO TYPING EFFECT ===
+// HERO TYPING
 document.addEventListener("DOMContentLoaded", () => {
   const title = document.getElementById("hero-title");
   const text = "X E1 Boarding School";
   title.textContent = "";
   let i = 0;
-
   function typing() {
     if (i < text.length) {
       title.textContent += text.charAt(i);
       i++;
       setTimeout(typing, 100);
-    } else {
-      // setelah selesai, kasih glow animasi
-      title.style.animation = "glowText 2s infinite alternate";
     }
   }
   typing();
-
-  // Sub animasi fade in
-  const sub = document.getElementById("hero-sub");
-  sub.style.opacity = 0;
-  setTimeout(() => {
-    sub.style.transition = "opacity 1.5s ease";
-    sub.style.opacity = 1;
-  }, 2000);
 });
 
-// === SMOOTH SCROLL NAVIGATION ===
+// SMOOTH SCROLL
 document.querySelectorAll("a[href^='#']").forEach(link => {
   link.addEventListener("click", e => {
     e.preventDefault();
-    document.querySelector(link.getAttribute("href")).scrollIntoView({
-      behavior: "smooth"
-    });
+    document.querySelector(link.getAttribute("href")).scrollIntoView({behavior:"smooth"});
   });
 });
 
-// === SCROLL REVEAL EFFECT ===
-const revealElements = document.querySelectorAll(
-  "#visi, #misi, #tentang, .doc-item, .mission-card, .quote"
-);
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = 1;
-      entry.target.style.transform = "translateY(0)";
-    }
-  });
-}, { threshold: 0.2 });
+// SECTION REVEAL
+const sections = document.querySelectorAll("section");
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add("revealed"); });
+},{threshold:0.2});
+sections.forEach(s=>obs.observe(s));
 
-revealElements.forEach(el => {
-  el.style.opacity = 0;
-  el.style.transform = "translateY(60px)";
-  el.style.transition = "all 0.8s cubic-bezier(0.25, 1, 0.5, 1)";
-  observer.observe(el);
+// CUSTOM CURSOR
+const cursor = document.createElement("div");
+cursor.classList.add("cursor-glow");
+document.body.appendChild(cursor);
+document.addEventListener("mousemove", e=>{
+  cursor.style.left = e.pageX+"px";
+  cursor.style.top = e.pageY+"px";
 });
 
-// === RANDOM PARTICLE BACKGROUND EFFECT (futuristik) ===
-const particleContainer = document.createElement("div");
-particleContainer.style.position = "fixed";
-particleContainer.style.top = 0;
-particleContainer.style.left = 0;
-particleContainer.style.width = "100%";
-particleContainer.style.height = "100%";
-particleContainer.style.zIndex = "-1";
-particleContainer.style.overflow = "hidden";
-document.body.appendChild(particleContainer);
+// 3D TILT
+document.querySelectorAll(".doc-item, .mission-card").forEach(card=>{
+  card.addEventListener("mousemove", e=>{
+    const rect=card.getBoundingClientRect();
+    const x=e.clientX-rect.left, y=e.clientY-rect.top;
+    const rotateX=(y-rect.height/2)/20, rotateY=(x-rect.width/2)/20;
+    card.style.transform=`rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+  });
+  card.addEventListener("mouseleave", ()=>{
+    card.style.transform="rotateX(0) rotateY(0) scale(1)";
+    card.style.transition="transform 0.3s ease";
+  });
+});
 
-for (let i = 0; i < 30; i++) {
-  const particle = document.createElement("span");
-  particle.classList.add("particle");
-  particle.style.left = Math.random() * 100 + "vw";
-  particle.style.top = Math.random() * 100 + "vh";
-  particle.style.animationDuration = 5 + Math.random() * 10 + "s";
-  particle.style.opacity = Math.random();
-  particleContainer.appendChild(particle);
+// LIGHTBOX PRO
+const lightbox=document.getElementById("lightbox");
+const lightboxImg=document.getElementById("lightbox-img");
+const lightboxCaption=document.getElementById("lightbox-caption");
+const closeBtn=document.querySelector(".close");
+const prevBtn=document.querySelector(".prev");
+const nextBtn=document.querySelector(".next");
+const thumbStrip=document.getElementById("thumb-strip");
+
+let currentIndex=0;
+const images=document.querySelectorAll(".doc-item img");
+
+images.forEach((img,i)=>{
+  const thumb=document.createElement("img");
+  thumb.src=img.src;
+  thumb.addEventListener("click",()=>showImage(i));
+  thumbStrip.appendChild(thumb);
+});
+
+function updateThumb(){ document.querySelectorAll(".thumb-strip img").forEach((t,i)=>t.classList.toggle("active",i===currentIndex)); }
+function showImage(i){
+  if(i<0) i=images.length-1; if(i>=images.length) i=0;
+  currentIndex=i;
+  lightbox.classList.add("show"); lightbox.style.display="flex";
+  lightboxImg.src=images[i].src; lightboxCaption.textContent=images[i].nextElementSibling.textContent;
+  updateThumb();
 }
-
-// === LIGHTBOX GALLERY ===
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightbox-img");
-const lightboxCaption = document.getElementById("lightbox-caption");
-const closeBtn = document.querySelector(".close");
-
-document.querySelectorAll(".doc-item img").forEach(img => {
-  img.addEventListener("click", () => {
-    lightbox.style.display = "block";
-    lightboxImg.src = img.src;
-    lightboxCaption.textContent = img.nextElementSibling.textContent;
-  });
+images.forEach((img,i)=>img.addEventListener("click",()=>showImage(i)));
+prevBtn.addEventListener("click",()=>showImage(currentIndex-1));
+nextBtn.addEventListener("click",()=>showImage(currentIndex+1));
+closeBtn.addEventListener("click",()=>{ lightbox.style.display="none"; lightbox.classList.remove("show"); });
+window.addEventListener("click",e=>{ if(e.target===lightbox){ lightbox.style.display="none"; lightbox.classList.remove("show"); }});
+document.addEventListener("keydown",e=>{
+  if(lightbox.style.display==="flex"){
+    if(e.key==="ArrowLeft") showImage(currentIndex-1);
+    if(e.key==="ArrowRight") showImage(currentIndex+1);
+    if(e.key==="Escape"){ lightbox.style.display="none"; lightbox.classList.remove("show"); }
+  }
 });
-
-closeBtn.addEventListener("click", () => {
-  lightbox.style.display = "none";
-});
-window.addEventListener("click", e => {
-  if (e.target === lightbox) lightbox.style.display = "none";
+// Swipe
+let startX=0;
+lightbox.addEventListener("touchstart",e=>{startX=e.touches[0].clientX;});
+lightbox.addEventListener("touchend",e=>{
+  const endX=e.changedTouches[0].clientX;
+  if(startX-endX>50) showImage(currentIndex+1);
+  if(endX-startX>50) showImage(currentIndex-1);
 });
