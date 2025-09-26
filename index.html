@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- HEADER -->
   <header>
     <nav>
       <div class="logo">🚀 X E1</div>
@@ -24,7 +25,7 @@
     <div class="hero-content">
       <h1 id="hero-title">X E1 Boarding School</h1>
       <p id="hero-sub">"Membentuk Generasi Sains, Riset, & Karakter Global"</p>
-      <p style="font-size:1.1em; font-weight:500;">Program Unggulan Boarding School MAN 1 Surakarta</p>
+      <p class="tagline">Program Unggulan Boarding School MAN 1 Surakarta</p>
       <a href="#visi" class="cta-button">Jelajahi Sekarang</a>
     </div>
   </section>
@@ -55,30 +56,12 @@
   <section class="documentation" id="dokumentasi">
     <h2>📸 Dokumentasi</h2>
     <div class="doc-gallery">
-      <div class="doc-item">
-        <img src="Eksperimen.jpg" alt="Eksperimen">
-        <p>🔬 Laboratorium Mini, Inovasi Maksimal</p>
-      </div>
-      <div class="doc-item">
-        <img src="Presentasi.jpg" alt="Presentasi">
-        <p>🎤 Presentasi Ide Hebat</p>
-      </div>
-      <div class="doc-item">
-        <img src="Suasana.jpg" alt="Suasana Belajar">
-        <p>📚 Belajar = Petualangan Ilmu</p>
-      </div>
-      <div class="doc-item">
-        <img src="BBM.jpg" alt="Boarding with People">
-        <p>🤝 Boarding Bersama Masyarakat</p>
-      </div>
-      <div class="doc-item">
-        <img src="Workshop.jpg" alt="Workshop">
-        <p>💡 Workshop Inovatif & Gaul</p>
-      </div>
-      <div class="doc-item">
-        <img src="Fotbar.jpg" alt="Fotbar">
-        <p>📸 Momen Kebersamaan</p>
-      </div>
+      <div class="doc-item"><img src="Eksperimen.jpg" alt="Eksperimen"><p>🔬 Laboratorium Mini, Inovasi Maksimal</p></div>
+      <div class="doc-item"><img src="Presentasi.jpg" alt="Presentasi"><p>🎤 Presentasi Ide Hebat</p></div>
+      <div class="doc-item"><img src="Suasana.jpg" alt="Suasana"><p>📚 Belajar = Petualangan Ilmu</p></div>
+      <div class="doc-item"><img src="BBM.jpg" alt="Boarding with People"><p>🤝 Boarding Bersama Masyarakat</p></div>
+      <div class="doc-item"><img src="Workshop.jpg" alt="Workshop"><p>💡 Workshop Inovatif & Gaul</p></div>
+      <div class="doc-item"><img src="Fotbar.jpg" alt="Fotbar"><p>📸 Momen Kebersamaan</p></div>
     </div>
   </section>
 
@@ -106,16 +89,21 @@
 
   <!-- FOOTER -->
   <footer>
-    <p>&copy; 2025 X E1 Founder | Designed by Arditya W 🌍</p>
+    <p>&copy; 2025 X E1 Founder | Designed for Global Impact 🌍</p>
   </footer>
 
-  <script src="script.js"></script>
-
-  <!-- Lightbox -->
+  <!-- LIGHTBOX -->
   <div id="lightbox" class="lightbox">
     <span class="close">&times;</span>
-    <img class="lightbox-content" id="lightbox-img">
+    <div class="lightbox-inner">
+      <a class="prev">&#10094;</a>
+      <img class="lightbox-content" id="lightbox-img">
+      <a class="next">&#10095;</a>
+    </div>
     <p id="lightbox-caption"></p>
+    <div class="thumb-strip" id="thumb-strip"></div>
   </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
