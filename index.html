@@ -7,6 +7,17 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Morph Animated Background -->
+  <svg class="morph-bg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#ff416c" />
+        <stop offset="100%" stop-color="#0072ff" />
+      </linearGradient>
+    </defs>
+    <path d="M0,160L1440,160L1440,320L0,320Z"></path>
+  </svg>
+
   <!-- HEADER -->
   <header>
     <nav>
@@ -106,6 +117,12 @@
 
   <!-- MORPH TRANSITION -->
   <svg class="morph-overlay" viewBox="0 0 1440 320" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="morphGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#ff416c" />
+        <stop offset="100%" stop-color="#ff4b2b" />
+      </linearGradient>
+    </defs>
     <path d="M0,320 L1440,320 L1440,0 Q720,180 0,0 Z"></path>
   </svg>
 
