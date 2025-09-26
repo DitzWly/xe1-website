@@ -1,0 +1,267 @@
+html {
+  scroll-padding-top: 100px; /* fix header overlap */
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #0f0f0f, #1c1c2b, #2a1f3d);
+  color: #eee;
+  scroll-behavior: smooth;
+}
+
+/* Header */
+header {
+  background: rgba(20, 20, 30, 0.85);
+  backdrop-filter: blur(6px);
+  padding: 20px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.6);
+  transition: background 0.3s ease;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.logo {
+  font-size: 2em;
+  font-weight: bold;
+  color: #ff4b2b;
+  animation: glowText 2s infinite alternate;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+.nav-links li { margin-left: 20px; }
+.nav-links a {
+  color: #eee;
+  text-decoration: none;
+  transition: color 0.3s, transform 0.3s;
+}
+.nav-links a:hover {
+  color: #ff416c;
+  transform: scale(1.1);
+}
+
+/* Hero */
+.hero {
+  background: linear-gradient(rgba(10,10,20,0.6), rgba(0,0,0,0.7)), 
+              url('hero-image.jpg') center/cover no-repeat fixed;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.hero-content {
+  max-width: 800px;
+  padding: 25px;
+  background: rgba(25,25,35,0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+  animation: fadeIn 2s ease-in-out;
+}
+.hero-content h1 {
+  font-size: 3.5em;
+  background: linear-gradient(90deg, #ff416c, #ff4b2b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-content p {
+  font-size: 1.2em;
+  color: #ddd;
+  margin-bottom: 15px;
+  animation: fadeInUp 2s ease;
+}
+
+/* CTA */
+.cta-button {
+  display: inline-block;
+  background: linear-gradient(90deg, #ff416c, #ff4b2b);
+  color: #fff;
+  padding: 15px 30px;
+  text-decoration: none;
+  border-radius: 30px;
+  font-size: 1.2em;
+  transition: transform 0.3s, box-shadow 0.3s;
+  animation: pulseGlow 2.5s infinite;
+}
+.cta-button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 20px rgba(255,65,108,0.6);
+}
+
+/* Section cards */
+#visi, #misi, #tentang {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 40px 20px;
+  background: rgba(25,25,35,0.85);
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+  transition: transform 0.3s ease;
+}
+#visi:hover, #misi:hover, #tentang:hover {
+  transform: translateY(-8px);
+}
+#visi h2, #misi h2, #tentang h2 { color: #ff4b2b; }
+
+/* Dokumentasi */
+.documentation {
+  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  padding: 60px 20px;
+  border-radius: 20px;
+  margin: 60px auto;
+  max-width: 1200px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  text-align: center;
+}
+.documentation h2 {
+  color: #fff;
+  margin-bottom: 40px;
+  font-size: 2.4em;
+  font-weight: 700;
+  text-align: center;
+}
+.doc-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  align-items: stretch;
+  justify-items: center;
+}
+.doc-item {
+  background: rgba(255,255,255,0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+}
+.doc-item:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+.doc-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.doc-item p {
+  margin: 0;
+  padding: 14px;
+  width: 100%;
+  background: linear-gradient(90deg, #ff416c, #ff4b2b);
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.95em;
+  text-align: center;
+}
+
+/* Quote */
+.quote {
+  padding: 80px 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b);
+  color: #fff;
+  font-size: 1.5em;
+  font-weight: 600;
+  border-radius: 20px;
+  margin: 60px auto;
+  max-width: 1000px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+  animation: float 5s ease-in-out infinite;
+}
+
+/* Missions */
+.missions {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+.mission-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.mission-card {
+  width: 300px;
+  margin: 20px;
+  padding: 15px;
+  background: rgba(25,25,35,0.85);
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.6);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.mission-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+}
+.mission-card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+.mission-card h3 { color: #ff416c; }
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px 0;
+  background: rgba(25,25,35,0.8);
+  font-size: 0.9em;
+  color: #aaa;
+}
+
+/* Particle effect */
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, #ff416c, #ff4b2b);
+  border-radius: 50%;
+  animation: floatParticle linear infinite;
+}
+@keyframes floatParticle {
+  from { transform: translateY(0) scale(1); opacity: 0.8; }
+  to { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+}
+
+/* Animations */
+@keyframes glowText {
+  from { text-shadow: 0 0 5px #ff416c, 0 0 10px #ff4b2b; }
+  to { text-shadow: 0 0 15px #ff416c, 0 0 25px #ff4b2b; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 10px rgba(255,65,108,0.4); }
+  50% { box-shadow: 0 0 25px rgba(255,65,108,0.8); }
+  100% { box-shadow: 0 0 10px rgba(255,65,108,0.4); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
